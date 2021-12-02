@@ -14,16 +14,16 @@ public class Classe {
     @Id
     @Column(name="num_classe", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long num_classe;
+    private int num_classe;
 
     @Column(name="nom_classe", nullable = false)
     private String nom_classe;
 
-    public long getNum_classe() {
+    public int getNum_classe() {
         return num_classe;
     }
 
-    public void setNum_classe(long num_classe) {
+    public void setNum_classe(int num_classe) {
         this.num_classe = num_classe;
     }
 
@@ -34,6 +34,4 @@ public class Classe {
     public void setNom_classe(String nom_classe) {
         this.nom_classe = nom_classe;
     }
-
-
 }

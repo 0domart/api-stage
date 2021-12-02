@@ -15,7 +15,7 @@ public class Stage {
     @Id
     @Column(name="num_stage", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long numStage;
+    private Integer numStage;
 
     @Column(name="debut_stage", nullable = false)
     private Date debutStage;
@@ -41,11 +41,11 @@ public class Stage {
     @Column(name="num_entreprise", nullable = false)
     private int numEntreprise;
 
-    public long getNumStage() {
+    public int getNumStage() {
         return numStage;
     }
 
-    public void setNumStage(long numStage) {
+    public void setNumStage(int numStage) {
         this.numStage = numStage;
     }
 

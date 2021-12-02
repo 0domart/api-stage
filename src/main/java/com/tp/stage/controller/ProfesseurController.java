@@ -26,7 +26,7 @@ public class ProfesseurController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Professeur> getProfesseurById(@PathVariable(value = "id") Long professeurId)
+    public ResponseEntity<Professeur> getProfesseurById(@PathVariable(value = "id") Integer professeurId)
             throws Exception {
         Professeur professeur =
                 professeurRepository
@@ -42,7 +42,7 @@ public class ProfesseurController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Professeur> updateProfesseur(
-            @PathVariable(value = "id") Long userId, @RequestBody Professeur professeurDetails)
+            @PathVariable(value = "id") Integer userId, @RequestBody Professeur professeurDetails)
             throws Exception {
 
         Professeur professeur =
@@ -64,7 +64,7 @@ public class ProfesseurController {
     public Map<String, Boolean> deleteProfesseur(@PathVariable(value = "id") int professeurId) throws Exception {
         Professeur professeur =
                 professeurRepository
-                        .findById((long) professeurId)
+                        .findById(professeurId)
                         .orElseThrow(() -> new Exception("Exception"));
 
         professeurRepository.delete(professeur);

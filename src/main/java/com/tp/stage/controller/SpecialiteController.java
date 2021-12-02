@@ -26,7 +26,7 @@ public class SpecialiteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Specialite> getProfesseurById(@PathVariable(value = "id") Long professeurId)
+    public ResponseEntity<Specialite> getProfesseurById(@PathVariable(value = "id") Integer professeurId)
             throws Exception {
         Specialite specialite =
                 specialiteRepository
@@ -42,7 +42,7 @@ public class SpecialiteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Specialite> updateProfesseur(
-            @PathVariable(value = "id") Long userId, @RequestBody Specialite specialiteDetails)
+            @PathVariable(value = "id") Integer userId, @RequestBody Specialite specialiteDetails)
             throws Exception {
 
         Specialite specialite =
@@ -60,7 +60,7 @@ public class SpecialiteController {
     public Map<String, Boolean> deleteProfesseur(@PathVariable(value = "id") int specialiteId) throws Exception {
         Specialite specialite =
                 specialiteRepository
-                        .findById((long) specialiteId)
+                        .findById(specialiteId)
                         .orElseThrow(() -> new Exception("Exception"));
 
         specialiteRepository.delete(specialite);

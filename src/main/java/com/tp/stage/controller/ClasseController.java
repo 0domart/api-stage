@@ -25,7 +25,7 @@ public class ClasseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Classe> getClasseByNumClasse(@PathVariable(value="id") Long num_classe) throws Exception {
+    public ResponseEntity<Classe> getClasseByNumClasse(@PathVariable(value="id") Integer num_classe) throws Exception {
 
         Classe classe = classeRepository.findById(num_classe).orElseThrow(() -> new Exception("Classe not found"));
         return ResponseEntity.ok().body(classe);
@@ -34,7 +34,7 @@ public class ClasseController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Classe> updateClasse(
-            @PathVariable(value = "id") Long num_classe, @RequestBody Classe userDetails)
+            @PathVariable(value = "id") Integer num_classe, @RequestBody Classe classeDetails)
             throws Exception {
 
         Classe classe =
@@ -42,13 +42,13 @@ public class ClasseController {
                         .findById(num_classe)
                         .orElseThrow(() -> new Exception("User not found on :: " + num_classe));
 
-        classe.setNom_classe(classe.getNom_classe());
+        classe.setNom_classe(classeDetails.getNom_classe());
         final Classe updatedUser = classeRepository.save(classe);
         return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/{id}")
-    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long num_classe) throws Exception {
+    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer num_classe) throws Exception {
         Classe classe =
                 classeRepository
                         .findById(num_classe)

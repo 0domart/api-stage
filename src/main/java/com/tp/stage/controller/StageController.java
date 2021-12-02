@@ -26,7 +26,7 @@ public class StageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Stage> GetStageByNumStage(@PathVariable(value="id") Long num_stage) throws Exception {
+    public ResponseEntity<Stage> GetStageByNumStage(@PathVariable(value="id") Integer num_stage) throws Exception {
 
         Stage stage = stageRepository.findById(num_stage).orElseThrow(() -> new Exception("Stage not found"));
         return ResponseEntity.ok().body(stage);
@@ -40,7 +40,7 @@ public class StageController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Stage> updateStage(
-            @PathVariable(value = "id") Long num_stage, @RequestBody Stage newStage)
+            @PathVariable(value = "id") Integer num_stage, @RequestBody Stage newStage)
             throws Exception {
 
         Stage stage =
@@ -62,7 +62,7 @@ public class StageController {
     }
 
     @DeleteMapping("/{id}")
-    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long num_stage) throws Exception {
+    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer num_stage) throws Exception {
         Stage stage =
                 stageRepository
                         .findById(num_stage)
@@ -73,6 +73,4 @@ public class StageController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
-
-
 }

@@ -14,16 +14,16 @@ public class Specialite {
     @Id
     @Column(name="num_spec", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long num_classe;
+    private Integer num_classe;
 
     @Column(name="libelle", nullable = false)
     private String libelle;
 
-    public long getNum_classe() {
+    public int getNum_classe() {
         return num_classe;
     }
 
-    public void setNum_classe(long num_classe) {
+    public void setNum_classe(int num_classe) {
         this.num_classe = num_classe;
     }
 
