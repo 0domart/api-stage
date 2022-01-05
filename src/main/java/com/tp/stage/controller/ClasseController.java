@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/stage/classe")
-
+@CrossOrigin
 public class ClasseController {
 
     @Autowired
