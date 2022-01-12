@@ -1,9 +1,8 @@
 package com.tp.stage.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.w3c.dom.Text;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "entreprise")
@@ -48,6 +47,20 @@ public class Entreprise {
 
     @Column(name = "site_entreprise", nullable = false)
     private String siteEntreprise;
+
+    @JoinTable(name = "spec_entreprise", joinColumns = {@JoinColumn(name="num_entreprise")},
+    inverseJoinColumns = {@JoinColumn(name = "num_spec")})
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Specialite> specialite;
+
+
+    public List<Specialite> getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(List<Specialite> specialite) {
+        this.specialite = specialite;
+    }
 
     public int getNum_entreprise() {
         return num_entreprise;
