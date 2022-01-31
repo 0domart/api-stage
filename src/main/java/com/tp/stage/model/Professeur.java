@@ -17,7 +17,7 @@ public class Professeur {
     private String nomProf;
 
     @Column(name = "prenom_prof", nullable = false)
-    private String prenomEtudiant;
+    private String prenomProf;
 
     @Column(name = "login", nullable = false)
     private String login;
@@ -44,12 +44,12 @@ public class Professeur {
         this.nomProf = nomProf;
     }
 
-    public String getPrenomEtudiant() {
-        return prenomEtudiant;
+    public String getPrenomProf() {
+        return prenomProf;
     }
 
-    public void setPrenomEtudiant(String prenomEtudiant) {
-        this.prenomEtudiant = prenomEtudiant;
+    public void setPrenomProf(String prenomProf) {
+        this.prenomProf = prenomProf;
     }
 
     public String getLogin() {

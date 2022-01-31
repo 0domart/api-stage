@@ -51,7 +51,7 @@ public class ProfesseurController {
                         .findById(userId)
                         .orElseThrow(() -> new Exception("Exception"));
 
-        professeur.setPrenomEtudiant(professeurDetails.getPrenomEtudiant());
+        professeur.setPrenomProf(professeurDetails.getPrenomProf());
         professeur.setLogin(professeurDetails.getLogin());
         professeur.setNomProf(professeurDetails.getNomProf());
         professeur.setEmail(professeurDetails.getEmail());
