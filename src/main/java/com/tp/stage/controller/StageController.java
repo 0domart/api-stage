@@ -54,9 +54,9 @@ public class StageController {
         stage.setTypeStage(newStage.getTypeStage());
         stage.setDescProjet(newStage.getDescProjet());
         stage.setObservationStage(newStage.getObservationStage());
-        stage.setNumEtudiant(newStage.getNumEtudiant());
-        stage.setNumProf(newStage.getNumProf());
-        stage.setNumEntreprise(newStage.getNumEntreprise());
+        stage.setEtudiant(newStage.getEtudiant());
+        stage.setProf(newStage.getProf());
+        stage.setEntreprise(newStage.getEntreprise());
 
         final Stage updatedStage = stageRepository.save(stage);
         return ResponseEntity.ok(updatedStage);

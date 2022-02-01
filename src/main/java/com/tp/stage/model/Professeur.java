@@ -2,6 +2,8 @@ package com.tp.stage.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -27,6 +29,9 @@ public class Professeur {
 
     @Column(name = "email", nullable = false)
     private String email;
+
+    @OneToMany(mappedBy = "professeur")
+    private Collection<Stage> stages = new ArrayList<>();
 
     public int getNum_prof() {
         return num_prof;

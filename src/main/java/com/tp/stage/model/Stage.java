@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -32,14 +33,17 @@ public class Stage {
     @Column(name="observation_stage", nullable = false)
     private String observationStage;
 
-    @Column(name="num_etudiant", nullable = false)
-    private int numEtudiant;
+    @ManyToOne
+    @JoinColumn(name = "num_etudiant")
+    private Etudiant etudiant;
 
-    @Column(name="num_prof", nullable = false)
-    private int numProf;
+    @ManyToOne
+    @JoinColumn(name = "num_entreprise")
+    private Entreprise entreprise;
 
-    @Column(name="num_entreprise", nullable = false)
-    private int numEntreprise;
+    @ManyToOne
+    @JoinColumn(name = "num_prof")
+    private Professeur professeur;
 
     public int getNumStage() {
         return numStage;
@@ -89,27 +93,27 @@ public class Stage {
         this.observationStage = observationStage;
     }
 
-    public int getNumEtudiant() {
-        return numEtudiant;
+    public Etudiant getEtudiant() {
+        return etudiant;
     }
 
-    public void setNumEtudiant(int numEtudiant) {
-        this.numEtudiant = numEtudiant;
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
     }
 
-    public int getNumProf() {
-        return numProf;
+    public Professeur getProf() {
+        return professeur;
     }
 
-    public void setNumProf(int numProf) {
-        this.numProf = numProf;
+    public void setProf(Professeur prof) {
+        this.professeur = prof;
     }
 
-    public int getNumEntreprise() {
-        return numEntreprise;
+    public Entreprise getEntreprise() {
+        return entreprise;
     }
 
-    public void setNumEntreprise(int numEntreprise) {
-        this.numEntreprise = numEntreprise;
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
     }
 }

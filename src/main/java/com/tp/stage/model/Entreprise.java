@@ -2,6 +2,8 @@ package com.tp.stage.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -53,6 +55,8 @@ public class Entreprise {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Specialite> specialite;
 
+    @OneToMany(mappedBy = "entreprise")
+    private Collection<Stage> stages = new ArrayList<>();
 
     public List<Specialite> getSpecialite() {
         return specialite;
