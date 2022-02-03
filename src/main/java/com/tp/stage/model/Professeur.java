@@ -30,7 +30,7 @@ public class Professeur {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "professeur")
+    @OneToMany(mappedBy = "professeur", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch=FetchType.EAGER)
     private Collection<Stage> stages = new ArrayList<>();
 
     public int getNum_prof() {

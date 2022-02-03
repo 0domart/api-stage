@@ -55,7 +55,7 @@ public class Entreprise {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Specialite> specialite;
 
-    @OneToMany(mappedBy = "entreprise")
+    @OneToMany(mappedBy = "entreprise", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch=FetchType.EAGER)
     private Collection<Stage> stages = new ArrayList<>();
 
     public List<Specialite> getSpecialite() {

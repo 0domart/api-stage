@@ -2,6 +2,8 @@ package com.tp.stage.model;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name ="mission")
@@ -32,17 +34,17 @@ public class Mission {
         this.libelle = libelle;
     }
 
-    public int getNumStage() {
-        return numStage;
+    public Stage getNumStage() {
+        return stage;
     }
 
-    public void setNumStage(int numStage) {
-        this.numStage = numStage;
+    public void setNumStage(Stage numStage) {
+        this.stage = numStage;
     }
 
-    @Column(name="num_stage", nullable = false)
-    private int numStage;
-
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    @JoinColumn(name = "num_stage")
+    private Stage stage;
 
 
 }

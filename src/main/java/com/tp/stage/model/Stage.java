@@ -4,6 +4,8 @@ package com.tp.stage.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Stage {
 
     @Id
     @Column(name="num_stage", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numStage;
 
     @Column(name="debut_stage", nullable = false)
@@ -30,28 +32,23 @@ public class Stage {
     @Column(name="desc_projet", nullable = false)
     private String descProjet;
 
-    @Column(name="observation_stage", nullable = false)
+    @Column(name="observation_stage")
     private String observationStage;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch=FetchType.EAGER)
     @JoinColumn(name = "num_etudiant")
     private Etudiant etudiant;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch=FetchType.EAGER)
     @JoinColumn(name = "num_entreprise")
     private Entreprise entreprise;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch=FetchType.EAGER)
     @JoinColumn(name = "num_prof")
     private Professeur professeur;
 
-    public int getNumStage() {
-        return numStage;
-    }
-
-    public void setNumStage(int numStage) {
-        this.numStage = numStage;
-    }
+    @OneToMany(mappedBy = "stage", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch=FetchType.EAGER)
+    private Collection<Mission> missions = new ArrayList<>();
 
     public Date getDebutStage() {
         return debutStage;

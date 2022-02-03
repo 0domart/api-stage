@@ -55,6 +55,7 @@ public class EntrepriseController {
                         .findById(num_entreprise)
                         .orElseThrow(() -> new Exception("Exception"));
 
+        entreprise.setRaisonSociale(entrepriseDetails.getRaisonSociale());
         entreprise.setCpEntreprise(entrepriseDetails.getCpEntreprise());
         entreprise.setFaxEntreprise(entrepriseDetails.getFaxEntreprise());
         entreprise.setRueEntreprise(entrepriseDetails.getRueEntreprise());

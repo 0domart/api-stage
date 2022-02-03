@@ -35,6 +35,10 @@ public class StageController {
 
     @PostMapping("/")
     public Stage createStage(@RequestBody Stage stage) {
+        System.out.println(stage.getProf());
+        System.out.println(stage.getEtudiant());
+        System.out.println(stage.getEntreprise());
+
         return stageRepository.save(stage);
     }
 

@@ -20,7 +20,7 @@ public class Etudiant {
     @Column(name = "prenom_etudiant", nullable = false)
     private String prenomEtudiant;
 
-    @Column(name = "annee_obtention", nullable = false)
+    @Column(name = "annee_obtention")
     private Date anneeObtention;
 
     @Column(name = "login", nullable = false)
@@ -35,7 +35,8 @@ public class Etudiant {
     @Column(name = "en_activite", nullable = false)
     private int enActivite;
 
-    @OneToMany(mappedBy = "etudiant")
+    @OneToMany(mappedBy = "etudiant", cascade = {CascadeType.REMOVE}, orphanRemoval = true,fetch=FetchType.EAGER)
+
     private Collection<Stage> stages = new ArrayList<>();
 
     public int getNum_etudiant() {
