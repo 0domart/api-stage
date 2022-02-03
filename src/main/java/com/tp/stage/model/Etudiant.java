@@ -35,8 +35,7 @@ public class Etudiant {
     @Column(name = "en_activite", nullable = false)
     private int enActivite;
 
-    @OneToMany(mappedBy = "etudiant",fetch=FetchType.EAGER)
-
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "etudiant", orphanRemoval = true, fetch=FetchType.EAGER)
     private Collection<Stage> stages = new ArrayList<>();
 
     public int getNum_etudiant() {

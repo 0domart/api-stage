@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -22,7 +23,7 @@ public class Classe {
     private String nom_classe;
 
     @Transient
-    @OneToMany(mappedBy = "numClasse", orphanRemoval = true, fetch=FetchType.EAGER)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "numClasse", orphanRemoval = true, fetch=FetchType.EAGER)
     private List<ProfClasse> listProfClasse = new ArrayList<>();
 
     public int getNum_classe() {

@@ -32,7 +32,7 @@ public class Entreprise {
     @Column(name = "ville_entreprise", nullable = false)
     private String villeEntreprise;
 
-    @Column(name = "tel_entreprise")
+    @Column(name = "tel_entreprise", nullable = false)
     private String telEntreprise;
 
     @Column(name = "fax_entreprise")
@@ -47,7 +47,7 @@ public class Entreprise {
     @Column(name = "observation")
     private String observation;
 
-    @Column(name = "site_entreprise", nullable = false)
+    @Column(name = "site_entreprise")
     private String siteEntreprise;
 
     @JoinTable(name = "spec_entreprise", joinColumns = {@JoinColumn(name="num_entreprise")},
