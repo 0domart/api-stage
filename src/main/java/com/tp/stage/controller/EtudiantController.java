@@ -2,6 +2,7 @@ package com.tp.stage.controller;
 
 import com.tp.stage.model.Etudiant;
 import com.tp.stage.repository.EtudiantRepository;
+import com.tp.stage.repository.StageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ public class EtudiantController {
 
     @Autowired
     private EtudiantRepository etudiantRepository;
+
+    @Autowired
+    private StageRepository stageRepository;
 
     /**
      * Get all users list.
@@ -69,6 +73,7 @@ public class EtudiantController {
                 etudiantRepository
                         .findById(etudiantId)
                         .orElseThrow(() -> new Exception("Exception"));
+
 
         etudiantRepository.delete(etudiant);
         Map<String, Boolean> response = new HashMap<>();

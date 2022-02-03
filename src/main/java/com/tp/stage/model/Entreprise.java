@@ -52,10 +52,12 @@ public class Entreprise {
 
     @JoinTable(name = "spec_entreprise", joinColumns = {@JoinColumn(name="num_entreprise")},
     inverseJoinColumns = {@JoinColumn(name = "num_spec")})
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE }, fetch = FetchType.LAZY)
     private List<Specialite> specialite;
 
-    @OneToMany(mappedBy = "entreprise", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch=FetchType.EAGER)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "entreprise", orphanRemoval = true, fetch=FetchType.EAGER)
     private Collection<Stage> stages = new ArrayList<>();
 
     public List<Specialite> getSpecialite() {

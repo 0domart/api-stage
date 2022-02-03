@@ -4,6 +4,8 @@ package com.tp.stage.model;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -18,6 +20,10 @@ public class Classe {
 
     @Column(name="nom_classe", nullable = false)
     private String nom_classe;
+
+    @Transient
+    @OneToMany(mappedBy = "numClasse", orphanRemoval = true, fetch=FetchType.EAGER)
+    private List<ProfClasse> listProfClasse = new ArrayList<>();
 
     public int getNum_classe() {
         return num_classe;

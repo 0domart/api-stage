@@ -42,7 +42,7 @@ public class Mission {
         this.stage = numStage;
     }
 
-    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "num_stage")
     private Stage stage;
 

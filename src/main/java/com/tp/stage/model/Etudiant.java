@@ -35,7 +35,7 @@ public class Etudiant {
     @Column(name = "en_activite", nullable = false)
     private int enActivite;
 
-    @OneToMany(mappedBy = "etudiant", cascade = {CascadeType.REMOVE}, orphanRemoval = true,fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "etudiant",fetch=FetchType.EAGER)
 
     private Collection<Stage> stages = new ArrayList<>();
 

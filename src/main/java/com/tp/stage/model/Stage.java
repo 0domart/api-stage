@@ -35,19 +35,19 @@ public class Stage {
     @Column(name="observation_stage")
     private String observationStage;
 
-    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "num_etudiant")
     private Etudiant etudiant;
 
-    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "num_entreprise")
     private Entreprise entreprise;
 
-    @ManyToOne(cascade = {CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "num_prof")
     private Professeur professeur;
 
-    @OneToMany(mappedBy = "stage", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "stage",orphanRemoval = true, fetch=FetchType.EAGER)
     private Collection<Mission> missions = new ArrayList<>();
 
     public Date getDebutStage() {

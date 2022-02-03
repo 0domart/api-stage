@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "professeur")
@@ -30,8 +31,12 @@ public class Professeur {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "professeur", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "professeur", fetch=FetchType.EAGER)
     private Collection<Stage> stages = new ArrayList<>();
+
+    @Transient
+    @OneToMany(mappedBy = "numProf", orphanRemoval = true, fetch=FetchType.EAGER)
+    private List<ProfClasse> listProfClasse = new ArrayList<>();
 
     public int getNum_prof() {
         return num_prof;
